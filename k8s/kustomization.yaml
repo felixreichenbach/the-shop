@@ -1,4 +1,4 @@
-namespace: oktoberfest
+namespace: the-shop
 
 resources:
   - namespace.yaml

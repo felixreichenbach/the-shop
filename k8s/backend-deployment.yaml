@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: oktoberfest-backend:latest
+          image: the-shop-backend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
@@ -22,12 +22,12 @@ spec:
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
-                  name: oktoberfest-secrets
+                  name: the-shop-secrets
                   key: DATABASE_URL
             - name: SESSION_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: oktoberfest-secrets
+                  name: the-shop-secrets
                   key: SESSION_SECRET
           readinessProbe:
             httpGet:
