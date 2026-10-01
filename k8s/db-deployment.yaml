@@ -21,18 +21,18 @@ spec:
             - containerPort: 5432
           envFrom:
             - secretRef:
-                name: oktoberfest-secrets
+                name: the-shop-secrets
           volumeMounts:
             - name: db-data
               mountPath: /var/lib/postgresql/data
           readinessProbe:
             exec:
-              command: ["pg_isready", "-U", "oktoberfest"]
+              command: ["pg_isready", "-U", "the-shop"]
             initialDelaySeconds: 5
             periodSeconds: 5
           livenessProbe:
             exec:
-              command: ["pg_isready", "-U", "oktoberfest"]
+              command: ["pg_isready", "-U", "the-shop"]
             initialDelaySeconds: 10
             periodSeconds: 10
       volumes:

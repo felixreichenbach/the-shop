@@ -2,15 +2,15 @@ services:
   db:
     image: postgres:16-alpine
     environment:
-      POSTGRES_USER: oktoberfest
-      POSTGRES_PASSWORD: oktoberfest
-      POSTGRES_DB: oktoberfest
+      POSTGRES_USER: the-shop
+      POSTGRES_PASSWORD: the-shop
+      POSTGRES_DB: the-shop
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U oktoberfest"]
+      test: ["CMD-SHELL", "pg_isready -U the-shop"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -18,7 +18,7 @@ services:
   backend:
     build: ./backend
     environment:
-      DATABASE_URL: postgresql://oktoberfest:oktoberfest@db:5432/oktoberfest
+      DATABASE_URL: postgresql://the-shop:the-shop@db:5432/the-shop
       SESSION_SECRET: ${SESSION_SECRET:-change-me-in-production}
     depends_on:
       db:
